@@ -1,0 +1,90 @@
+﻿html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+}
+
+/*Info Side Bar*/
+
+.infoSideBar {
+    padding: 0 0 25px 25px;
+}
+
+.infoSideBar-block {
+    margin-top: 20px;
+}
+
+.logoApp {
+    display: block;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999;
+}
+
+.blockTitle {
+    font-weight: 300;
+}
+
+.userAvatar, .placePhoto {
+    height: 80px;
+}
+
+.userDecription {
+    padding-left: 15px;
+}
+
+.placeItem {
+    margin-bottom: 5px;
+    transition: all .3s;
+}
+
+.infoSideBar-block button span {
+    margin-left:  10px;
+}
+
+.overflowScroll {
+    overflow-y: scroll;
+}
+
+.overflowScroll::-webkit-scrollbar {
+     width: 0;
+}
+
+.placeItem:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 3px #444;
+    cursor: pointer;
+}
+
+/*Map*/
+
+#map {
+    height: 100%;
+}
+
+.markerInfo {
+    height: 150px;    
+    width: 250px;
+}
+
+#infowindow-content {
+    padding: 10px;
+    display: flex;
+}
+
+#infowindow-content .title {
+    font-weight: bold;
+}
+
+.infowindow-content__photo {
+    height: 100px;
+}
+
+.infowindow-content__rating {
+    font-weight: bold;
+}
+
+.infowindow-content__text {
+    width: 100%;
+    padding-left: 20px;
+}

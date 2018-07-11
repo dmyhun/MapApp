@@ -1,0 +1,43 @@
+﻿<div class="row" style="height: 100%;">
+    <div class="col-sm-3 overflowScroll">
+            @Html.Partial("Info")
+    </div>
+    <div class="col-sm-9">
+       <div id="map"></div> 
+
+        <div id="infowindow-content">
+            <div id="infowindow-content__1">
+                <img src="~/Images/mount.jpg" id="place-image" class="infowindow-content__photo rounded"/>
+                <p id="place-rating-wrapper">Raiting: <span class="infowindow-content__rating" id="place-rating">4</span> / 5</p>
+            </div>
+            <div class="infowindow-content__text" id="infowindow-content__2">
+                <p class="text-center font-weight-bold" id="place-name">
+                    Ddkfksdkfds Dddsfdsfdsf
+                </p>
+                <p id="place-address-wrapper"><i class="fas fa-map-marker"></i><span id="place-address">adsdasdsa 225 sad55</span></p>
+                <p id="place-phone-wrapper"><i class="fas fa-phone"></i><span id="place-phone">+35885 4564 25</span></p>
+                <button type="button" class="btn btn-primary btn-sm">More details</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<div id="form" style="display: none">
+    <table>
+        <tr><td>Name:</td> <td><input type="text" id="name" /> </td> </tr>
+        <tr><td>Address:</td> <td><input type="text" id="address" /> </td> </tr>
+        <tr>
+            <td>Type:</td>
+            <td>
+                <select id="type">
+                    <option value="bar" SELECTED>bar</option>
+                    <option value="restaurant">restaurant</option>
+                </select>
+            </td>
+        </tr>
+        <tr><td></td><td><input type="button" value="Save" onclick="saveData()" /></td></tr>
+    </table>
+</div>
+<div id="message" style="display: none">Location saved</div>
+-->
