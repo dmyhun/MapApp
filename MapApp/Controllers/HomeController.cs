@@ -10,16 +10,7 @@ namespace MapApp.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
-        }
-
-        public ActionResult UserInfo()
-        {
-            ViewBag.Title = "Home Page";
-
-            return PartialView();
         }
     }
 }

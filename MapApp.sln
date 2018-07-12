@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapApp", "MapApp\MapApp.csproj", "{224D89E4-A70C-4736-A2F6-9C0A84159538}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapApp.DAL", "MapApp.DAL\MapApp.DAL.csproj", "{135B66E2-3F06-4A47-B65A-BFFC7267E98E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{224D89E4-A70C-4736-A2F6-9C0A84159538}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{224D89E4-A70C-4736-A2F6-9C0A84159538}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{224D89E4-A70C-4736-A2F6-9C0A84159538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{135B66E2-3F06-4A47-B65A-BFFC7267E98E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{135B66E2-3F06-4A47-B65A-BFFC7267E98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{135B66E2-3F06-4A47-B65A-BFFC7267E98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{135B66E2-3F06-4A47-B65A-BFFC7267E98E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
