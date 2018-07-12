@@ -25,27 +25,8 @@
             <h2 class="blockTitle">My places</h2>
             <button type="button" class="btn btn-primary btn-sm">Plan my trip!<span><i class="fas fa-location-arrow"></i></span></button>
         </div>
-        <ul class="placeList list-unstyled">
-            <li class="placeItem d-flex">
-                <img class="placePhoto rounded" src="/Images/mount.jpg"/>
-                <p class="userDecription text-justify">Lorem Ipsum.</p>
-            </li>
-            <li class="placeItem d-flex">
-                <img class="placePhoto rounded" src="/Images/mount.jpg"/>
-                <p class="userDecription text-justify">Lorem Ipsum.</p>
-            </li>
-            <li class="placeItem d-flex">
-                <img class="placePhoto rounded" src="/Images/mount.jpg"/>
-                <p class="userDecription text-justify">Lorem Ipsum.</p>
-            </li>
-            <li class="placeItem d-flex">
-                <img class="placePhoto rounded" src="/Images/mount.jpg"/>
-                <p class="userDecription text-justify">Lorem Ipsum.</p>
-            </li>
-            <li class="placeItem d-flex">
-                <img class="placePhoto rounded" src="/Images/mount.jpg"/>
-                <p class="userDecription text-justify">Lorem Ipsum.</p>
-            </li>
-        </ul>
+        <div id="placeLoaded">
+            @Html.Action("RenderPlaces", "Home", null)
+        </div>
     </div>
 </div>

@@ -1,21 +1,29 @@
 ﻿<div class="row" style="height: 100%;">
-    <div class="col-sm-3 overflowScroll">
-            @Html.Partial("Info")
+    <div class="col-sm-4 overflowScroll">
+        @Html.Partial("Info")
     </div>
-    <div class="col-sm-9">
-       <div id="map"></div> 
+    <div class="col-sm-8">
+        <div id="map"></div>
 
         <div id="infowindow-content">
+            <input type="hidden" id="googlePlaceId"/>
             <div>
                 <img src="~/Images/no-img.jpg" id="place-image" class="infowindow-content__photo rounded"/>
                 <p id="place-rating" class="text-center"></p>
             </div>
             <div class="infowindow-content__text">
                 <p class="text-center font-weight-bold" id="place-name"></p>
-                <p><i class="fas fa-map-marker"></i><span id="place-address"></span></p>
-                <p><i class="fas fa-phone"></i><span id="place-phone"></span></p>
-                <button type="button" class="btn btn-primary btn-sm">More details</button>
+                <p>
+                    <i class="fas fa-map-marker"></i><span id="place-address"></span>
+                </p>
+                <p>
+                    <i class="fas fa-phone"></i><span id="place-phone"></span>
+                </p>
+                <button type="button" onclick="addPlace()" class="btn btn-primary btn-sm">Add place</button>
             </div>
         </div>
     </div>
 </div>
+
+
+        

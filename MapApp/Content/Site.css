@@ -39,6 +39,7 @@
     -o-transition: all .3s;
     -webkit-transition: all .3s;
     transition: all .3s;
+    padding: 0 5px;
 }
 
 .infoSideBar-block button span {
@@ -59,6 +60,10 @@
     transform: scale(1.02);
     box-shadow: 0px 0px 3px #444;
     cursor: pointer;
+}
+
+.btnDelete {
+
 }
 
 /*Map*/
