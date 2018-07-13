@@ -23,6 +23,7 @@ namespace MapApp.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult RenderPlaces()
         {
             var places = repo.GetPlaces();

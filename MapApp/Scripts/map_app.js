@@ -12,6 +12,8 @@ function initMap() {
 
     service = new google.maps.places.PlacesService(map);
 
+    renderPlaces();
+
     getCurentLocation();
 
     autocompliteSearch();
@@ -98,7 +100,7 @@ function addPlace() {
         data: JSON.stringify(data),
         contentType: "application/json;charset=utf-8",
         success: function (data) {
-            $("#placeLoaded").load("/Home/RenderPlaces");
+            renderPlaces();
             infowindow.close();
         },
         error: function (x, y, z) {
@@ -113,7 +115,21 @@ function deletePlace(id) {
         type: 'DELETE',
         contentType: "application/json;charset=utf-8",
         success: function (data) {
-            $("#placeLoaded").load("/Home/RenderPlaces");
+            renderPlaces();
+        },
+        error: function (x, y, z) {
+            alert(x + '\n' + y + '\n' + z);
+        }
+    });
+}
+
+function renderPlaces() {
+    $.ajax({
+        url: '/Home/RenderPlaces/',
+        type: 'POST',
+        contentType: "application/json;charset=utf-8",
+        success: function (data) {
+            $("#placeLoaded").html(data);
         },
         error: function (x, y, z) {
             alert(x + '\n' + y + '\n' + z);
