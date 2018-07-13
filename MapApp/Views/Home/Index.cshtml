@@ -1,6 +1,8 @@
-﻿<div class="row" style="height: 100%; overflow: hidden;">
+﻿@model MapApp.Models.UserVM
+
+<div class="row" style="height: 100%; overflow: hidden;">
     <div class="col-sm-4 overflowScroll">
-        @Html.Partial("Info")
+        @Html.Partial("Info", Model)
     </div>
     <div class="col-sm-8">
         <div id="map"></div>

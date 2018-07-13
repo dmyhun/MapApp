@@ -86,7 +86,10 @@ function autocompliteSearch() {
 }
 
 function addPlace() {
+    var userName = $("#UserName").val();
+
     var data = {
+        UserName: userName,
         Name: document.getElementById("place-name").innerText,
         Address: document.getElementById("place-address").innerText,
         PhoneNumber: document.getElementById("place-phone").innerText,
@@ -110,8 +113,10 @@ function addPlace() {
 }
 
 function deletePlace(id) {
+    var userName = $("#UserName").val();
+
     $.ajax({
-        url: '/api/Place/' + id,
+        url: '/api/Place/?id=' + id + '&userName=' + userName,
         type: 'DELETE',
         contentType: "application/json;charset=utf-8",
         success: function (data) {
@@ -124,8 +129,10 @@ function deletePlace(id) {
 }
 
 function renderPlaces() {
+    var userName = $("#UserName").val();
+
     $.ajax({
-        url: '/Home/RenderPlaces/',
+        url: '/Home/RenderPlaces/?userName=' + userName,
         type: 'POST',
         contentType: "application/json;charset=utf-8",
         success: function (data) {

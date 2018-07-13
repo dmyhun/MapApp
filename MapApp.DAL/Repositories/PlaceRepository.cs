@@ -15,23 +15,23 @@ namespace MapApp.DAL.Repositories
     {
         string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-        public List<Place> GetPlaces()
+        public List<Place> GetPlaces(string userName)
         {
             List<Place> places = new List<Place>();
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                places = db.Query<Place>("SELECT * FROM Places").ToList();
+                places = db.Query<Place>("SELECT * FROM Places WHERE UserName = @userName", new { userName }).ToList();
             }
 
             return places;
         }
 
-        public Place GetPlace(int id)
+        public Place GetPlace(int id, string userName)
         {
             Place place = null;
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                place = db.Query<Place>("SELECT * FROM Places WHERE Id = @id", new {id})
+                place = db.Query<Place>("SELECT * FROM Places WHERE UserName = @userName AND Id = @id", new { userName, id })
                     .FirstOrDefault();
             }
 
@@ -43,7 +43,7 @@ namespace MapApp.DAL.Repositories
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 var sqlQuery =
-                    "INSERT INTO Places (GooglePlaceId, Name, Address, PhoneNumber, ImgUrl) VALUES(@GooglePlaceId, @Name, @Address, @PhoneNumber, @ImgUrl); SELECT CAST(SCOPE_IDENTITY() as int)";
+                    "INSERT INTO Places (GooglePlaceId, UserName, Name, Address, PhoneNumber, ImgUrl) VALUES(@GooglePlaceId, @UserName, @Name, @Address, @PhoneNumber, @ImgUrl); SELECT CAST(SCOPE_IDENTITY() as int)";
                 int placeId = db.Query<int>(sqlQuery, place).FirstOrDefault();
                 place.Id = placeId;
             }
@@ -51,12 +51,12 @@ namespace MapApp.DAL.Repositories
             return place;
         }
 
-        public void DeletePlace(int id)
+        public void DeletePlace(int id, string userName)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Places WHERE Id = @id";
-                db.Execute(sqlQuery, new {Id = id});
+                var sqlQuery = "DELETE FROM Places WHERE UserName = @userName AND Id = @id";
+                db.Execute(sqlQuery, new { UserName = userName, Id = id});
             }
         }
     }

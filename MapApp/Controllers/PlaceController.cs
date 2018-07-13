@@ -15,14 +15,14 @@ namespace MapApp.Controllers
             repo = new PlaceRepository();
         }
 
-        public IEnumerable<Place> GetPlaces()
+        public IEnumerable<Place> GetPlaces(string userName)
         {
-            return repo.GetPlaces();
+            return repo.GetPlaces(userName);
         }
 
-        public Place GetPlace(int id)
+        public Place GetPlace(int id, string userName)
         {
-            return repo.GetPlace(id);
+            return repo.GetPlace(id, userName);
         }
 
         [HttpPost]
@@ -32,12 +32,12 @@ namespace MapApp.Controllers
         }
 
         [HttpDelete]
-        public void DeletePlace(int id)
+        public void DeletePlace(int id, string userName)
         {
-            Place place = repo.GetPlace(id);
+            Place place = repo.GetPlace(id, userName);
             if (place != null)
             {
-                repo.DeletePlace(id);
+                repo.DeletePlace(id, userName);
             }
         }
     }
