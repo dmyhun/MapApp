@@ -51,12 +51,12 @@ namespace MapApp.DAL.Repositories
             return place;
         }
 
-        public void DeletePlace(int placeId)
+        public void DeletePlace(int id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Places WHERE Id = @Id";
-                db.Execute(sqlQuery, new {Id = placeId});
+                var sqlQuery = "DELETE FROM Places WHERE Id = @id";
+                db.Execute(sqlQuery, new {Id = id});
             }
         }
     }

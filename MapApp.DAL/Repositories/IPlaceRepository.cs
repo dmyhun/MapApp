@@ -8,6 +8,6 @@ namespace MapApp.DAL.Repositories
         List<Place> GetPlaces();
         Place GetPlace(int id);
         Place AddPlace(Place place);
-        void DeletePlace(int placeId);
+        void DeletePlace(int id);
     }
 }

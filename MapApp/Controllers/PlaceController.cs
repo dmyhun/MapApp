@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Web.Http;
 using MapApp.DAL.Models;
 using MapApp.DAL.Repositories;
@@ -31,12 +32,12 @@ namespace MapApp.Controllers
         }
 
         [HttpDelete]
-        public void DeletePlace(int placeId)
+        public void DeletePlace(int id)
         {
-            Place place = repo.GetPlace(placeId);
+            Place place = repo.GetPlace(id);
             if (place != null)
             {
-                repo.DeletePlace(placeId);
+                repo.DeletePlace(id);
             }
         }
     }

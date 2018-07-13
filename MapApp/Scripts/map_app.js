@@ -108,14 +108,9 @@ function addPlace() {
 }
 
 function deletePlace(id) {
-    var data = {
-        PlaceId: id
-    };
-
     $.ajax({
-        url: '/api/Place/',
+        url: '/api/Place/' + id,
         type: 'DELETE',
-        data: JSON.stringify(data),
         contentType: "application/json;charset=utf-8",
         success: function (data) {
             $("#placeLoaded").load("/Home/RenderPlaces");

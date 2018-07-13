@@ -4,15 +4,17 @@
     @foreach (var p in Model)
     {
         <li class="placeItem d-flex align-items-center">
-            <img class="placePhoto rounded" src="@p.ImgUrl"/>
+            <div class="img-wrapper">
+                <img class="placePhoto rounded" src="@p.ImgUrl" />
+            </div>
             <div class="userDecription">
-                <p class="placeTitle font-weight-bold">@p.Name</p>
-                <p class="placeAddress text-justify">@p.Address</p>
-                <p class="placePhoneNumber text-justify">@p.PhoneNumber</p>
-                <button class="btn btn-danger btn-sm btnDelete" id="btnDltPl_@p.Id" onclick="deletePlace(@p.Id)">Delete</button>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class="font-weight-bold">@p.Name</p>
+                    <button class="btn-link btn btn-sm btnDelete" id="btnDltPl_@p.Id" onclick="deletePlace(@p.Id)"><i class="fas fa-trash-alt"></i></button>
+                </div>
+                <p class="text-justify">@p.Address</p>
+                <p class="text-justify">@p.PhoneNumber</p>
             </div>
         </li>
     }
 </ul>
-
-
