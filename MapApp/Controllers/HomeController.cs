@@ -17,6 +17,7 @@ namespace MapApp.Controllers
             repo = new PlaceRepository();
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             return View();

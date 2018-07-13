@@ -2,7 +2,7 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        overflow: hidden;
+    overflow-x: hidden;
 }
 
 /*Info Side Bar*/
@@ -80,6 +80,37 @@
     color: #bc8f8f;
 }
 
+/*Identification*/
+
+.identification-wrapper {
+     height: 100%; 
+     display: flex; 
+     align-items: center;
+    z-index: 99999;
+}
+
+#loginForm_btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 10px;
+}
+
+#video-bg-identification {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+.alert-popup {
+    position: fixed;
+    z-index: 999;
+    top: 3%;
+    right: 3%;
+}
+
 
 /*Map*/
 
@@ -112,4 +143,12 @@
 .infowindow-content__text {
     width: 100%;
     padding-left: 20px;
+}
+
+
+@media (max-width: 768px) {
+    #loginForm_btn {
+        position: relative;
+        margin: 0;
+    }
 }
