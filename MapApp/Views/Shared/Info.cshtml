@@ -1,45 +1,73 @@
 ﻿@model MapApp.Models.UserVM
 @{ bool isMe = Model.UserName == User.Identity.Name; }
 <div class="infoSideBar">
-    <h1 class="logoApp display-4">MapApp</h1>
+    <h1 class="logoApp display-4">@Html.ActionLink("MapApp", "Index", "Home", new { userName = User.Identity.Name },  new {style = "text-decoration: none;"})</h1>
     <input type="hidden" value="@Model.UserName" id="UserName"/>
-    <div class="infoSideBar-block">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="blockTitle">@Model.FirstName @Model.LastName</h2>
-            @if (isMe)
-            {
-            <div>
-                <button type="button" class="btn btn-light btn-sm">Settings<span><i class="fas fa-cog"></i></span></button>
-                <a href="/Account/Logout" class="btn btn-link btn-sm" style="color: #212529;"><i class="fas fa-sign-out-alt"></i></a>
-            </div>
-            }
-        </div>
-        <div class="d-flex">
-            <div>
-                <img class="userAvatar" src="@Model.ImageUrl" />
-                <p class="text-center userStatus">Online</p>
-            </div>
-            <p class="userDecription text-justify">@Model.Description</p>
-        </div>
+    <div class="infoSideBar-block" id="userInfo">
+        @Html.Partial("UserInfo", Model)
     </div>
     
     @if (isMe)
     {
         <div class="infoSideBar-block">
-            <h2 class="blockTitle">Search</h2>
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="blockTitle">Search</h2>
+                <button type="button" id="btnGetCurentLocation" disabled onclick="getCurentLocation()" class="btn btn-primary btn-sm"><i class="fas fa-map-marker-alt"></i></button>
+            </div>
             <input type="search" class="form-control" id="search-input" placeholder="Enter here place you'd like to visit..."/>
         </div>
     }
-
     <div class="infoSideBar-block">
         <div class="d-flex justify-content-between align-items-center">
-            <h2 class="blockTitle">My places</h2>
-            @if (isMe)
-            {
-                <button type="button" class="btn btn-primary btn-sm">Plan my trip!<span><i class="fas fa-location-arrow"></i></span></button>
+            <h2 class="blockTitle">Places</h2>
+            @if (isMe) {
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" id="btnHideRoute" disabled onclick="hideRoute()" class="btn btn-secondary btn-sm"><span><i class="fas fa-eye-slash"></i></span></button>
+                    <button type="button" id="btnDisplayRoute" disabled onclick="displayRoute()" class="btn btn-primary btn-sm">Plan my trip!<i class="fas fa-location-arrow"></i></button>
+                </div>
             }
         </div>
         <div id="placeLoaded">
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalSettings" tabindex="-1" role="dialog" aria-labelledby="modalSettingsTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalSettingsTitle">Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--using (Html.BeginForm("EditUser", "Home", FormMethod.Post, new { id="editUserForm", enctype = "multipart/form-data" })) {}-->
+            <form id="editUserForm" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @Html.HiddenFor(m => m.UserName)
+                    <div class="form-group">
+                        <label for="settingsFirstName">First Name</label>
+                        <input type="text" class="form-control" id="settingsFirstName" placeholder="Enter First Name" name="FirstName" value="@Model.FirstName"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsLastName">Last Name</label>
+                        <input type="text" class="form-control" id="settingsLastName" placeholder="Enter Last Name" name="LastName" value="@Model.LastName"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsDescription">Description</label>
+                        <textarea class="form-control" id="settingsDescription" rows="3" name="Description">@Model.Description</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="UploadImageFile">Your photo</label>
+                        <input type="file" class="form-control-file" id="UploadImageFile" name="UploadImageFile">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="btnSubmiteditUserForm" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

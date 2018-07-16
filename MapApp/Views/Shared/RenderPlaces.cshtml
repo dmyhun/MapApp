@@ -1,5 +1,13 @@
 ﻿@model IEnumerable<MapApp.DAL.Models.Place>
 
+@{
+    bool isMe = false;
+    if (Model.Any())
+    {
+        isMe = Model.FirstOrDefault().UserName == User.Identity.Name;
+    }
+}
+
 <ul class="placeList list-unstyled" id="placeList">
     @foreach (var p in Model)
     {
@@ -10,9 +18,13 @@
             <div class="userDecription">
                 <div class="d-flex align-items-center justify-content-between">
                     <p class="font-weight-bold">@p.Name</p>
+                    @if (isMe)
+                    {
                     <button class="btn-link btn btn-sm btnDelete" id="btnDltPl_@p.Id" onclick="deletePlace(@p.Id)"><i class="fas fa-trash-alt"></i></button>
+                    }
+              
                 </div>
-                <p class="text-justify">@p.Address</p>
+                <p class="text-justify placeAddress">@p.Address</p>
                 <p class="text-justify">@p.PhoneNumber</p>
             </div>
         </li>

@@ -1,0 +1,20 @@
+﻿@model MapApp.Models.UserVM
+@{ bool isMe = Model.UserName == User.Identity.Name; }
+
+<div class="d-flex justify-content-between align-items-center">
+    <h2 class="blockTitle">@Model.FirstName @Model.LastName</h2>
+    @if (isMe)
+    {
+        <div>
+            <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalSettings">Settings<span><i class="fas fa-cog"></i></span></button>
+            <a href="/Account/Logout" class="btn btn-link btn-sm" style="color: #212529;"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    }
+</div>
+<div class="d-flex">
+    <div>
+        <img class="userAvatar" src="@Model.ImageUrl" />
+        <p class="text-center userStatus">Online</p>
+    </div>
+    <p class="userDecription text-justify">@Model.Description</p>
+</div>
