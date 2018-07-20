@@ -1,0 +1,61 @@
+<div class="row" style="height: 100%; overflow: hidden;">
+  <div class="col-sm-4 overflowScroll">
+      <div class="infoSideBar">
+        <app-info [userInfo]="userClaims" (onLoggedOut)="onLoggedOut($event)"></app-info>
+        <div class="infoSideBar-block">
+            <div class="d-flex justify-content-between align-items-center">
+              <h2 class="blockTitle">Search</h2>
+              <button type="button" (click)="getCurentLocation()" id="btnGetCurentLocation"class="btn btn-primary btn-sm"><i class="fas fa-map-marker-alt"></i></button>
+            </div>
+            <input type="search" class="form-control" id="search-input" placeholder="Enter here place you'd like to visit..." autocorrect="off" autocomplete="off" spellcheck="off" #search/>
+          </div>
+          <div class="infoSideBar-block">
+            <div class="d-flex justify-content-between align-items-center">
+              <h2 class="blockTitle">Places</h2>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" id="btnHideRoute" class="btn btn-secondary btn-sm"><span><i class="fas fa-eye-slash"></i></span></button>
+                  <button type="button" (click)="planTrip()" id="btnDisplayRoute" class="btn btn-primary btn-sm">Plan my trip!<i class="fas fa-location-arrow"></i></button>
+                </div>
+            </div>
+            <div id="placeLoaded">
+                <ul class="placeList list-unstyled" id="placeList">
+                  <li *ngFor="let place of places; let i = index" class="placeItem d-flex align-items-center">
+                      <div class="img-wrapper">
+                          <img class="placePhoto rounded" src={{place.ImgUrl}}/>
+                          <small>Id : {{place.Id}}</small>
+                      </div>
+                      <div class="userDecription">
+                          <div class="d-flex align-items-center justify-content-between">
+                              <p class="font-weight-bold">{{place.Name}}</p>
+                              <button (click)="deletePlace(place.Id, place.UserName)" class="btn-link btn btn-sm btnDelete"><i class="fas fa-trash-alt"></i></button>               
+                          </div>
+                          <p class="text-justify placeAddress">{{place.Address}}</p>
+                          <p class="text-justify">{{place.Phone}}</p>
+                      </div>
+                    </li>
+                  </ul>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-8">        
+      <app-map [searchElement] = "searchElement" [userName]="userClaims.UserName" (onAddPlace)="onAddPlace()"></app-map>    
+    <div id="infowindow-content">
+      <input type="hidden" id="googlePlaceId"/>
+      <div>
+        <img src="http://hanassets.nd.gov/images/product/test.png" id="place-image" class="infowindow-content__photo rounded"/>
+        <p id="place-rating" class="text-center"></p>
+      </div>
+      <div class="infowindow-content__text">
+        <p class="text-center font-weight-bold" id="place-name"></p>
+        <p>
+          <i class="fas fa-map-marker"></i><span id="place-address"></span>
+        </p>
+        <p>
+          <i class="fas fa-phone"></i><span id="place-phone"></span>
+        </p>
+        <button type="button" class="btn btn-primary btn-sm">Add place</button>
+      </div>
+    </div>
+  </div>
+</div>

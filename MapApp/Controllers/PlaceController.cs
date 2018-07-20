@@ -15,6 +15,7 @@ namespace MapApp.Controllers
             repo = new PlaceRepository();
         }
 
+        [Route("getPlaces")]
         public IEnumerable<Place> GetPlaces(string userName)
         {
             return repo.GetPlaces(userName);
@@ -26,12 +27,14 @@ namespace MapApp.Controllers
         }
 
         [HttpPost]
+        [Route("addPlace")]
         public Place AddPlace([FromBody] Place place)
         {
             return repo.AddPlace(place);
         }
 
         [HttpDelete]
+        [Route("deletePlace")]
         public void DeletePlace(int id, string userName)
         {
             Place place = repo.GetPlace(id, userName);

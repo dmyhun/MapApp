@@ -1,0 +1,18 @@
+<h1 class="logoApp display-4">MapApp</h1>
+<input type="hidden" value={{userInfo.UserName}} id="UserName"/>
+<div class="infoSideBar-block" id="userInfo">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="blockTitle">{{userInfo.FirstName}} {{userInfo.LastName}}</h2>
+    <div>
+      <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#modalSettings">Settings<span><i class="fas fa-cog"></i></span></button>
+      <a (click)="logout()" class="btn btn-link btn-sm" style="color: #212529;"><i class="fas fa-sign-out-alt"></i></a>
+  </div>
+  </div>
+  <div class="d-flex">
+    <div>
+      <img class="userAvatar" src={{userInfo.ImageUrl}} />
+      <p class="text-center userStatus">Online</p>
+    </div>
+    <p class="userDecription text-justify">{{userInfo.Description}}</p>
+  </div>    
+  </div>

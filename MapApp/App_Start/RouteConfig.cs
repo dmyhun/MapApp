@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 using System.Web.Routing;
+
 
 namespace MapApp
 {
@@ -12,12 +14,6 @@ namespace MapApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                name: "User",
-                url: "{userName}",
-                defaults: new { controller = "Home", action = "Index" }
-            );
 
             routes.MapRoute(
                 name: "Default",

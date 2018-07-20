@@ -1,0 +1,55 @@
+<agm-map [latitude]="center.lat" [longitude]="center.lng" [zoom]="15">
+    <!--<agm-marker *ngFor="let m of markers;let i = index" [latitude]="m.lat" 
+    [longitude]="m.lng">
+    <agm-snazzy-info-window [maxWidth]="800" [closeWhenOthersOpen]="true">
+        <ng-template>
+            <div id="infowindow-content" style="width: 400px;">
+                <input type="hidden" id="googlePlaceId" value="{{place.googlePlaceId}}"/>
+                <div>
+                    <img src="{{place.ImgUrl}}" id="place-image" class="infowindow-content__photo rounded"/>                
+                </div>
+                <div class="infowindow-content__text">
+                    <p class="text-center font-weight-bold" id="place-name">{{place.Name}}</p>
+                    <p>
+                        <i class="fas fa-map-marker"></i><span id="place-address">{{place.Address}}</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i><span id="place-phone">{{place.PhoneNumber}}</span>
+                    </p>
+                    <button type="button" (click)="addPlace()" class="btn btn-primary btn-sm">Add place</button>
+                </div>
+            </div>
+        </ng-template>
+    </agm-snazzy-info-window>
+    </agm-marker>-->
+    <agm-marker *ngIf="meMarker" [latitude]="meMarker.lat" [longitude]="meMarker.lng">
+        <agm-snazzy-info-window [maxWidth]="800" [closeWhenOthersOpen]="true">
+            <ng-template>
+                <p>IT's ME!</p>
+            </ng-template>
+        </agm-snazzy-info-window>
+    </agm-marker>
+    <agm-marker *ngIf="placeMarker" [latitude]="placeMarker.lat" [longitude]="placeMarker.lng">
+        <agm-snazzy-info-window [maxWidth]="800" [closeWhenOthersOpen]="true">
+            <ng-template>
+                <div id="infowindow-content" style="width: 400px;">
+                    <input type="hidden" id="googlePlaceId" value={{place.GooglePlaceId}}/>
+                    <div>                
+                        <img src={{place.ImgUrl}} id="place-image" class="infowindow-content__photo rounded"/>
+                    </div>
+                    <div class="infowindow-content__text">
+                        <p class="text-center font-weight-bold" id="place-name">{{place.Name}}</p>
+                        <p>
+                            <i class="fas fa-map-marker"></i><span id="place-address">{{place.Address}}</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone"></i><span id="place-phone">{{place.PhoneNumber}}</span>
+                        </p>
+                        <button type="button" (click)="addPlace()" class="btn btn-primary btn-sm">Add place</button>
+                    </div>
+                </div>
+            </ng-template>
+        </agm-snazzy-info-window>
+    </agm-marker>
+    <agm-direction [origin]="meMarker" [destination]="placeMarker" [waypoints]="waypoint"></agm-direction>
+</agm-map>

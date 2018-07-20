@@ -24,7 +24,7 @@ namespace MapApp.Controllers
             userRepo = new UserRepository();
         }
 
-        [Authorize]
+      //  [Authorize]
         public ActionResult Index(string userName)
         {
             ApplicationUser user = userRepo.GetUser(userName ?? User.Identity.Name);
